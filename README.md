@@ -1,145 +1,99 @@
-# Tarea S1 – Fundamentos de Kotlin (Android)
+# Tarea S1 – Fundamentos de Kotlin (implementación personal)
 
-**Proyecto:** MyFirstApp  
-**Rama sugerida:** `tarea-s1`  
-**Autor:** *Completa tu nombre*
-
----
-
-## 1) Descripción
-App mínima en Android (Jetpack Compose) para demostrar fundamentos de Kotlin a través de funciones que imprimen resultados en Logcat.
-
-Incluye ejemplos de:
-- Tipos de datos
-- Control de flujo (`if`, `when`)
-- Colecciones y operaciones funcionales (`filter`, `map`, `reduce`, `forEach`)
-- Funciones puras y expresiones
-- Clases y `data class`
+**Repositorio:** https://github.com/Moises-Mestas/MyFirstApp  
+**Rama de trabajo:** `tarea-s1`  
+**Paquete principal:** `com.example.myfirstapp`  
+**Archivo principal:** `app/src/main/java/com/example/myfirstapp/MainActivity.kt`  
+**Autor:** *Moises Joaquin Mestas Maque*
 
 ---
 
-## 2) Requisitos
-- Android Studio (versión reciente)
-- JDK y SDK Android configurados
-- Dispositivo/emulador con API 24+
+## 1) ¿Qué hice?
+Construí una app mínima con **Jetpack Compose**. Toda la práctica de Kotlin se ejecuta desde `MainActivity` en el método `onCreate`, donde invoco una serie de funciones de demostración. Para ver los resultados, uso **`println(...)`** (aparecen en **Logcat** como `System.out`). La UI muestra un `Text` de bienvenida para verificar que la app corre.
+
+---
+
+## 2) Contenidos demostrados
+- **Variables y constantes:** `val`/`var` y `companion object` (`PI`, `MAX_USUARIOS`).  
+  → `demoVariablesYConstantes()`
+- **Tipos básicos:** `Int`, `Double`, `Float`, `Short`, `Long`, `Byte`, `Boolean`, `Char`, `String`.  
+  → `demoTiposBasicos()`
+- **Control de flujo:** `if` (con expresión) y `when`.  
+  → `demoIf()`, `demoWhen()`
+- **Manejo de errores:** `try/catch/finally` con `NumberFormatException`.  
+  → `demoTryCatch()`
+- **Bucles:** `while`, `for` (rangos y `downTo step`), `forEach`.  
+  → `demoWhile()`, `demoFor()`, `demoForeach()`
+- **Arreglos y listas:** `arrayOf`, `listOf`, `mutableListOf`.  
+  → `demoArrays()`, `demoListas()`
+- **Funciones (expresión/puras):** `saludo`, `doble`, `esAdulto`.  
+  → `demoFunciones()`
+- **Clases y `data class`:** `Persona` (métodos y mutabilidad controlada) y `Usuario`.  
+  → `demoClases()`
+- **Declarativo vs imperativo:** `filter → map → reduce` vs contador con bucle.  
+  → `demoDeclarativaVsImperativa()`
 
 ---
 
 ## 3) Cómo ejecutar
 1. Abrir el proyecto en Android Studio.
-2. Ejecutar **Run ▶️** sobre `app`.
-3. Abrir **Logcat** y filtrar por el proceso de la app (o por el **TAG** `Sesion1` si usaste `Log.d`).
+2. Ejecutar **Run ▶️** sobre el módulo `app`.
+3. Abrir **View → Tool Windows → Logcat** y seleccionar el proceso de la app.
+4. Como uso `println`, filtrar por **`System.out`** o por el nombre del paquete para ver las salidas.
 
-> En esta tarea puedes dejar `println(...)`. Para evidencias más claras, se recomienda añadir:
->
-> ```kotlin
-> import android.util.Log
-> private const val TAG = "Sesion1"
-> ```
-> y al inicio de cada demo:
-> ```kotlin
-> Log.d(TAG, "— IF —")
-> ```
 
----
 
-## 4) Estructura (demos incluidas)
-Archivo: `MainActivity.kt`
-- `demoVariablesYConstantes()`
-- `demoTiposBasicos()`
-- `demoIf()`
-- `demoWhen()`
-- `demoTryCatch()`
-- `demoWhile()`
-- `demoFor()`
-- `demoForeach()`
-- `demoArrays()`
-- `demoListas()`
-- `demoFunciones()`
-- `demoClases()`
-- `demoDeclarativaVsImperativa()`
+## 4) Evidencias (capturas)
+Las evidencias se guardan en la raíz del repo como imágenes PNG. Actualmente tengo:
 
----
+- `Evidencia1.png`
+- `Evidencia2.png`
 
-## 5) Evidencias (capturas de Logcat)
-Crea una carpeta **`docs/evidencias/`** y coloca capturas en PNG/JPG. Nombra así:
 
-- `01_variables_constantes.png`
-- `02_tipos_basicos.png`
-- `03_if.png`
-- `04_when.png`
-- `05_try_catch.png`
-- `06_while.png`
-- `07_for.png`
-- `08_foreach.png`
-- `09_arrays.png`
-- `10_listas.png`
-- `11_funciones.png`
-- `12_clases.png`
-- `13_declarativa_vs_imperativa.png`
 
-**Cómo obtenerlas en Android Studio:**
-1. Abre **Logcat** (View → Tool Windows → Logcat).
-2. Marca **Show only selected application** (opcional).
-3. Si usas `Log.d(TAG, ...)`, escribe `Sesion1` en el filtro.
-4. Ejecuta la app y toma la captura (icono de cámara o `Save as file`).
+## 5) Respuestas y reflexiones de aprendizaje
 
-**Alternativa por terminal (opcional):**
-```bash
-adb logcat -s Sesion1:D *:S > docs/evidencias/demo_if.txt
-```
+1. **Variables y constantes**  
+   Usé `val`/`var` y constantes en `companion object` (`PI`, `MAX_USUARIOS`). Prefiero `val` por defecto para dejar clara la intención inmutable y evitar cambios accidentales.
 
----
+2. **Tipos básicos**  
+   Probé `Int`, `Double`, `Float` (sufijo `f`), `Short`, `Long` (sufijo `L`), `Byte`, `Boolean`, `Char` y `String`. Elegir el tipo correcto evita conversiones implícitas y problemas de precisión; el separador `_` mejora la legibilidad.
 
-## 6) Respuestas y reflexiones de aprendizaje
-**Responde brevemente (2–4 líneas) y agrega ejemplos:**
+3. **`if`**  
+   Lo usé como instrucción y como **expresión** para asignar `mensaje`. Como expresión reduce código “ceremonial” y hace explícito el valor resultante.
 
-1. Diferencia entre **colección inmutable** y **mutable** en Kotlin. Ejemplifica con `listOf` y `mutableListOf`.
-2. ¿Cuándo usarías `when` en vez de múltiples `if-else`? Da un caso concreto.
-3. Explica con tus palabras la diferencia entre **estilo imperativo** y **declarativo**. Menciona una ventaja del declarativo.
-4. ¿Qué hace `filter → map → reduce` en tu ejemplo y qué devuelve cada etapa?
-5. ¿Por qué `data class` resulta útil? Cita `Usuario(id, correo)`.
-6. ¿Qué aprendiste al manejar errores con `try/catch` en `NumberFormatException`?
+4. **`when`**  
+   Mapeé `día → nombre`. Es más claro y mantenible que varios `if-else` y permite casos exhaustivos (útil con `enum`/rangos).
 
-**Reflexión personal (3–5 bullets):**
-- …
-- …
-- …
+5. **`try/catch/finally`**  
+   Atrapé `NumberFormatException` al convertir `"abc".toInt()`. Aprendí a degradar con mensaje en lugar de crashear; alternativa idiomática: `toIntOrNull()`.
 
----
+6. **`while`**  
+   Ciclo controlado por condición previa; lo usé para contar hasta 3. Recordatorio: cuidar la actualización de la condición para evitar bucles infinitos.
 
-## 7) Cómo entregar
+7. **`for`**  
+   Recorrí rangos (`1..5`) y descendentes con `downTo` y `step`. Los rangos de Kotlin evitan errores “off-by-one” y son muy legibles.
 
-### Opción A – Enlace a Git
-1. Crea la rama `tarea-s1` y sube cambios:
-   ```bash
-   git checkout -b tarea-s1
-   git add .
-   git commit -m "Tarea S1: demos Kotlin y evidencias"
-   git push -u origin tarea-s1
-   ```
-2. Comparte la URL del repositorio o del Pull Request.
+8. **`forEach`**  
+   Iteración funcional sobre listas; es limpio cuando solo leo elementos. No admite `break/continue`, así que si necesito cortar, prefiero `for`.
 
-### Opción B – ZIP
-1. Comprímelo desde el sistema operativo **excluyendo** `/.gradle`, `/build/` y `/app/build/` para reducir tamaño.
-2. Entrega el archivo: `MyFirstApp_tarea-s1.zip`.
+9. **Arrays**  
+   Con `arrayOf` muté por índice y observé tamaño fijo. Útil para datos de longitud conocida; para tamaño dinámico prefiero colecciones.
 
----
+10. **Listas**  
+   Diferencié `listOf` (inmutable) y `mutableListOf` (permite `add`). Por defecto usaré inmutables y solo mutables cuando realmente necesite cambios.
 
-## 8) Estructura sugerida del repositorio
-```
-MyFirstApp/
-├─ app/
-├─ docs/
-│  └─ evidencias/
-│     ├─ 01_variables_constantes.png
-│     └─ ...
-├─ README.md
-└─ .gitignore
-```
+11. **Funciones (puras/expresión)**  
+   `saludo`, `doble`, `esAdulto` no dependen de estado externo y son fáciles de probar. Los cuerpos de expresión hacen el código breve y claro.
 
----
+12. **Clases y `data class`**  
+   `Persona` muestra estado y comportamiento con `cumplirAnios`; `Usuario` como `data class` me da `toString/equals/copy/hashCode` automáticos, útiles para depuración y tests.
 
-## 9) Notas
-- Si escondiste los Tool Windows (Project, Logcat), ve a **Window → Restore Default Layout** o usa **Alt+1** (Project) y **View → Tool Windows → Logcat**.
-- Para pruebas repetibles, reinicia la app entre capturas para limpiar el Logcat.
+13. **Declarativa vs imperativa**  
+   Imperativo: conté pares con bucle y contador. Declarativo: `filter → map → reduce` expresa el “qué” y reduce errores por estado mutable; ganó en concisión y legibilidad.
+
+
+
+
+
+
